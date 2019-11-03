@@ -1,0 +1,40 @@
+/* Neutrals */
+$gray-1: #f5f7fa;
+$gray-2: #e4e7eb;
+$gray-5: #7b8794;
+$gray-7: #52606d;
+$gray-10: #1f2933;
+
+/* Brand */
+$primary-8: #127fbf;
+$primary-9: #0b69a3;
+
+$red-1: #ffe3e3;
+$red-8: #ab091e;
+$red-9: #8a041a;
+
+/* Spacing */
+$spacing-3: 0.75rem;
+$spacing-4: 1rem;
+$spacing-5: 1.5rem;
+$spacing-6: 2rem;
+$spacing-10: 8rem;
+$spacing-16: 48rem;
+
+/* Font Sizes */
+$font-size-2: 0.875rem;
+$font-size-3: 1rem;
+$font-size-6: 1.5rem;
+
+/* Border Radius */
+$border-radius: 3px;
+
+/* Box Shadow */
+$box-shadow-2: getBoxShadow(#000, 2);
+
+/* Globals */
+$black: $gray-10;
+$white: #fff;
+$background-color: $gray-2;
+$default-font-size: $font-size-3;
+$container-width: $spacing-16;

@@ -1,0 +1,11 @@
+.container {
+  margin: 0 auto;
+
+  &--md {
+    max-width: 40rem;
+  }
+
+  &--sm {
+    max-width: 32rem;
+  }
+}

@@ -1,0 +1,28 @@
+.input,
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  width: 100%;
+  padding: $spacing-3;
+  border-radius: $border-radius;
+  border: 1px solid $gray-5;
+  font-size: inherit;
+
+  &:focus,
+  &:active {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    outline: none;
+    border: 1px solid $primary-9;
+    box-shadow: getBoxShadow($primary-9, 2);
+  }
+
+  &--error {
+    border: 1px solid $red-9;
+    box-shadow: getBoxShadow($red-9, 2);
+  }
+}
