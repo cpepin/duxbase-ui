@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { memo } from 'preact/compat';
-import { useForm } from 'react-form';
 
+import Form from 'components/Form';
 import TextField from 'components/TextField';
 import Text from 'components/Text';
 import Container from 'components/Container';
@@ -13,10 +13,9 @@ function SignIn() {
   const { post: signIn } = usePost('http://localhost:3000/auth/login');
 
   const handleSubmit = values => {
+    console.log(values);
     signIn(values);
   };
-
-  const { Form } = useForm({ onSubmit: handleSubmit });
 
   return (
     <Container class="mt-10" size="sm">
@@ -28,7 +27,7 @@ function SignIn() {
         Manage your teams with ease.
       </Text>
 
-      <Form class="mt-6 d-flex d-flex-column">
+      <Form class="mt-6 d-flex d-flex-column" onSubmit={handleSubmit}>
         <FieldContainer>
           <TextField label="Email" id="email" name="email" field="email" validate={isEmail} />
         </FieldContainer>

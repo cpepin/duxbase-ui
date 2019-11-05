@@ -26,6 +26,7 @@ module.exports = {
           ['components', path.resolve('src/components')],
           ['hooks', path.resolve('src/hooks')],
           ['utils', path.resolve('src/utils')],
+          ['contexts', path.resolve('src/contexts')],
         ],
       },
     },

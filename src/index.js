@@ -8,21 +8,10 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 import { h, render } from 'preact';
-import fastClick from 'fastclick';
 import 'unfetch/polyfill';
 
 import './sass/main.scss';
 import App from './App';
-
-if ('addEventListener' in document) {
-  document.addEventListener(
-    'DOMContentLoaded',
-    function handleFastClick() {
-      fastClick.attach(document.body);
-    },
-    false,
-  );
-}
 
 // root holds our app's root DOM Element:
 let root;
