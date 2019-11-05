@@ -41,8 +41,6 @@ function useField(opts = {}) {
     if (validateOnBlur) {
       triggerValidation();
     }
-
-    console.log(getState());
   }, [fieldState, formState, validateOnBlur, triggerValidation, getState]);
 
   const onChange = useCallback(() => {
@@ -52,8 +50,6 @@ function useField(opts = {}) {
     if (validateOnDirty) {
       triggerValidation();
     }
-
-    console.log(getState());
   }, [fieldState, formState, validateOnDirty, triggerValidation, getState]);
 
   const data = useMemo(
@@ -68,8 +64,6 @@ function useField(opts = {}) {
     }),
     [getState, error, onChange, onBlur, inputRef],
   );
-
-  console.log({ ...fieldState.current, error });
 
   return data;
 }
