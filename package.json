@@ -57,10 +57,12 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
+    "@reach/router": "^1.2.1",
     "cordova-ios": "^5.0.1",
     "core-js": "^3.3.6",
     "preact": "^10.0.1",
     "regenerator-runtime": "^0.13.3",
+    "spinthatshit": "^1.0.4",
     "unfetch": "^4.1.0",
     "validator": "^12.0.0"
   },

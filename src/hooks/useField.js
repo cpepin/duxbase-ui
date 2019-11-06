@@ -60,9 +60,10 @@ function useField(opts = {}) {
         onChange,
         onBlur,
         ref: inputRef,
+        name,
       },
     }),
-    [getState, error, onChange, onBlur, inputRef],
+    [getState, error, onChange, onBlur, inputRef, name],
   );
 
   return data;

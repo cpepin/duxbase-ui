@@ -5,15 +5,18 @@ import Form from 'components/Form';
 import TextField from 'components/TextField';
 import Text from 'components/Text';
 import Container from 'components/Container';
-import usePost from 'hooks/usePost';
 import FieldContainer from 'components/FieldContainer';
+
+import usePost from 'hooks/usePost';
+
 import { isEmail, isRequired } from 'utils/validation';
 
+import { login } from 'routes/auth';
+
 function SignIn() {
-  const { post: signIn } = usePost('http://localhost:3000/auth/login');
+  const { post: signIn } = usePost(login());
 
   const handleSubmit = values => {
-    console.log(values);
     signIn(values);
   };
 

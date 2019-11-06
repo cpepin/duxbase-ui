@@ -14,7 +14,13 @@ function TextField({ class: className, id, label, name, validate, ...rest }) {
   return (
     <Fragment>
       <label for={id}>{label}</label>
-      <input {...rest} {...fieldProps} class={classes} />
+      <input
+        class={classes}
+        id={id}
+        aria-describedby={error ? errorId : undefined}
+        {...rest}
+        {...fieldProps}
+      />
       {error && <FieldAlert id={errorId}>{error}</FieldAlert>}
     </Fragment>
   );

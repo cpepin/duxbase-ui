@@ -1,0 +1,18 @@
+/*
+  Importing this manually, as we only want to include
+  the code for our spinner, not the entire library.
+*/
+
+@import '../../../node_modules/spinthatshit/src/variables';
+@import '../../../node_modules/spinthatshit/src/animations';
+@import '../../../node_modules/spinthatshit/src/loaders/loader01';
+
+.spinner {
+  &__icon {
+    @include loader01;
+  }
+
+  &__label {
+    display: none;
+  }
+}

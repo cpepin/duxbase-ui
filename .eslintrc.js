@@ -27,6 +27,8 @@ module.exports = {
           ['hooks', path.resolve('src/hooks')],
           ['utils', path.resolve('src/utils')],
           ['contexts', path.resolve('src/contexts')],
+          ['pages', path.resolve('src/pages')],
+          ['routes', path.resolve('src/routes')],
         ],
       },
     },
