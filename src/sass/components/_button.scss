@@ -13,4 +13,16 @@ button {
   font-size: inherit;
   box-shadow: $box-shadow-2;
   cursor: pointer;
+
+  &:focus,
+  &:active {
+    outline: none;
+    border: none;
+    text-decoration: underline;
+    background-color: $primary-10;
+  }
+
+  &::-moz-focus-inner {
+    border: none;
+  }
 }
