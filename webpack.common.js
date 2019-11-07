@@ -8,7 +8,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      title: 'Nutrition Tracker',
+      title: 'Squad Leader',
       template: './public/index.ejs',
       isCordova: process.env.CORDOVA,
     }),
