@@ -1,3 +1,15 @@
 a {
   color: $primary-9;
+  border: 1px solid transparent;
+
+  &:focus {
+    outline: none;
+    border: 1px dashed $primary-10;
+  }
+
+  &:visited,
+  &:active {
+    outline: none;
+    color: $primary-10;
+  }
 }
