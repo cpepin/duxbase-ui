@@ -8,11 +8,15 @@ const defaultFieldState = {
   touched: false,
 };
 
-function useField(opts = {}) {
+function useField({
+  validate = () => false,
+  validateOnBlur = true,
+  validateOnDirty = false,
+  name,
+}) {
   const [error, setError] = useState(false);
   const { formState, registerField } = useContext(FormContext);
   const inputRef = useRef();
-  const { validate = () => false, validateOnBlur = true, validateOnDirty = false, name } = opts;
   const fieldState = useRef(defaultFieldState);
 
   const triggerValidation = useCallback(() => {
@@ -47,7 +51,7 @@ function useField(opts = {}) {
     formState.current.dirty = true;
     fieldState.current.dirty = true;
 
-    if (validateOnDirty) {
+    if (validateOnDirty || (validateOnBlur && fieldState.current.touched)) {
       triggerValidation();
     }
   }, [fieldState, formState, validateOnDirty, triggerValidation, getState]);
