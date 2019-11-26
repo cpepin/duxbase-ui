@@ -1,9 +1,9 @@
 import { h } from 'preact';
-import { memo } from 'preact/compat';
+import { memo, useEffect } from 'preact/compat';
+import { navigate } from '@reach/router';
 
 import Form from 'components/Form';
 import TextField from 'components/TextField';
-import Text from 'components/Text';
 import Container from 'components/Container';
 import FieldContainer from 'components/FieldContainer';
 
@@ -14,21 +14,23 @@ import { isEmail, isRequired } from 'utils/validation';
 import { login } from 'routes/auth';
 
 function SignIn() {
-  const { post: signIn } = usePost(login());
+  const { post: signIn, data: user } = usePost(login());
 
   const handleSubmit = values => {
     signIn(values);
   };
 
+  useEffect(() => {
+    if (user) {
+      navigate('/home');
+    }
+  }, [user]);
+
   return (
     <Container class="mt-10" size="sm">
-      <Text elemType="h1" size={6}>
-        Squad Leader
-      </Text>
+      <h1 class="font-size-6">Squad Leader</h1>
 
-      <Text class="color-gray-7 mt-3" elemType="p">
-        Manage your teams with ease.
-      </Text>
+      <p class="color-gray-7 mt-3">Manage your teams with ease.</p>
 
       <Form class="mt-6 d-flex d-flex-column" onSubmit={handleSubmit}>
         <FieldContainer>

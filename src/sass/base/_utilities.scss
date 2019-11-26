@@ -16,24 +16,8 @@
 }
 
 /* Spacing */
-.mt-3 {
-  margin-top: $spacing-3 !important;
-}
-
-.mt-4 {
-  margin-top: $spacing-4 !important;
-}
-
-.mt-5 {
-  margin-top: $spacing-5 !important;
-}
-
-.mt-6 {
-  margin-top: $spacing-6 !important;
-}
-
-.mt-10 {
-  margin-top: $spacing-10 !important;
+.mt {
+  @include build-spacing-util(margin-top);
 }
 
 .ml-auto {

@@ -7,6 +7,7 @@ import SignedInRoute from 'components/Routes/SignedInRoute';
 
 import Home from 'pages/Home';
 import SignIn from 'pages/SignIn';
+import Teams from 'pages/Teams';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Router>
           <AnonymousRoute component={SignIn} path="/" />
           <SignedInRoute component={Home} path="/home" />
+          <SignedInRoute component={Teams} path="/teams" />
         </Router>
       </main>
     </UserProvider>

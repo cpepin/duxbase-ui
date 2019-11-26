@@ -1,0 +1,16 @@
+@import '../../sass/abstracts/variables';
+
+.notification-container {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    height: $font-size-1;
+    width: $font-size-1;
+    top: -5px;
+    right: -5px;
+    background-color: $red-4;
+    border-radius: 50%;
+  }
+}

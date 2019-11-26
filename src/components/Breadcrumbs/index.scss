@@ -1,0 +1,33 @@
+@import '../../sass/abstracts/variables';
+
+.breadcrumbs {
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  font-size: $font-size-2;
+
+  &__crumb {
+    display: flex;
+    align-items: center;
+    color: adjust-color($primary-9, $saturation: 38%);
+
+    &:not(:last-child) {
+      a {
+        color: adjust-color($primary-9, $saturation: 38%);
+      }
+    }
+
+    &:last-child {
+      font-weight: 700;
+    }
+
+    & + & {
+      margin-left: map-get($spacing-sizes, 2);
+    }
+  }
+
+  &__chevron {
+    margin-left: map-get($spacing-sizes, 2);
+    fill: $primary-9;
+  }
+}

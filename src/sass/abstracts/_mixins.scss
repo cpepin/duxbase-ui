@@ -1,0 +1,7 @@
+@mixin build-spacing-util($property) {
+  @each $name, $size in $spacing-sizes {
+    &-#{$name} {
+      #{$property}: $size !important;
+    }
+  }
+}

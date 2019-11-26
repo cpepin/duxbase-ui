@@ -1,0 +1,13 @@
+@import '../../../sass/abstracts/variables';
+
+.team-icon {
+  width: 2rem;
+
+  &__primary {
+    fill: $gray-4;
+  }
+
+  &__secondary {
+    fill: $gray-9;
+  }
+}

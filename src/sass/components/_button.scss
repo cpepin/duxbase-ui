@@ -6,7 +6,7 @@ button {
   border: none;
   background-color: $primary-9;
   display: flex;
-  padding: $spacing-3;
+  padding: map-get($spacing-sizes, 3);
   justify-content: center;
   align-items: center;
   color: $gray-1;

@@ -2,7 +2,7 @@
 
 .form-alert {
   width: 100%;
-  padding: $spacing-3;
+  padding: map-get($spacing-sizes, 3);
   border-radius: $border-radius;
   background-color: $white;
   font-weight: 500;

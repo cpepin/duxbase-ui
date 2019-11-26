@@ -6,10 +6,12 @@ import useUser from 'hooks/useUser';
 import Spinner from 'components/Spinner';
 
 function SignedInRoute({ component: Component, ...rest }) {
-  const { fetchUser, isLoading, error } = useUser();
+  const { user, fetchUser, isLoading, error } = useUser();
 
   useSetup(() => {
-    fetchUser();
+    if (!user) {
+      fetchUser();
+    }
   });
 
   return !isLoading && !error ? <Component {...rest} /> : <Spinner />;

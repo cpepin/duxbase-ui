@@ -9,7 +9,7 @@
 body {
   color: $black;
   background-color: $background-color;
-  padding: 0 $spacing-5;
+  padding: 0 map-get($spacing-sizes, 5);
   box-sizing: border-box;
 
   font-family: 'Inter';

@@ -1,8 +1,12 @@
 /* Neutrals */
 $gray-1: #f5f7fa;
 $gray-2: #e4e7eb;
+$gray-3: #cbd2d9;
+$gray-4: #9aa5b1;
 $gray-5: #7b8794;
+$gray-6: #616e7c;
 $gray-7: #52606d;
+$gray-9: #323f4b;
 $gray-10: #1f2933;
 
 /* Brand */
@@ -11,18 +15,34 @@ $primary-9: #0b69a3;
 $primary-10: #035388;
 
 $red-1: #ffe3e3;
+$red-4: #f86a6a;
 $red-8: #ab091e;
 $red-9: #8a041a;
 
+$yellow-9: #b44d12;
+
 /* Spacing */
-$spacing-3: 0.75rem;
-$spacing-4: 1rem;
-$spacing-5: 1.5rem;
-$spacing-6: 2rem;
-$spacing-10: 8rem;
-$spacing-16: 48rem;
+$spacing-sizes: (
+  1: 0.25rem,
+  2: 0.5rem,
+  3: 0.75rem,
+  4: 1rem,
+  5: 1.5rem,
+  6: 2rem,
+  7: 3rem,
+  8: 4rem,
+  9: 6rem,
+  10: 8rem,
+  11: 12rem,
+  12: 16rem,
+  13: 24rem,
+  14: 32rem,
+  15: 40rem,
+  16: 48rem,
+);
 
 /* Font Sizes */
+$font-size-1: 0.75rem;
 $font-size-2: 0.875rem;
 $font-size-3: 1rem;
 $font-size-6: 1.5rem;
@@ -39,4 +59,4 @@ $black: $gray-10;
 $white: #fff;
 $background-color: $gray-2;
 $default-font-size: $font-size-3;
-$container-width: $spacing-16;
+$container-width: map-get($spacing-sizes, 16);
