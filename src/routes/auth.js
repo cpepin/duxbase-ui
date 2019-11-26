@@ -1,2 +1,4 @@
-export const login = () => 'http://localhost:3000/auth/login';
-export const me = () => 'http://localhost:3000/auth/me';
+import { getApiRoute } from 'utils/env';
+
+export const login = () => getApiRoute('/auth/login');
+export const me = () => getApiRoute('/auth/me');

@@ -10,21 +10,23 @@ import FieldContainer from 'components/FieldContainer';
 import usePost from 'hooks/usePost';
 
 import { isEmail, isRequired } from 'utils/validation';
+import { setCookie } from 'utils/cookies';
 
 import { login } from 'routes/auth';
 
 function SignIn() {
-  const { post: signIn, data: user } = usePost(login());
+  const { post: signIn, data } = usePost(login());
 
   const handleSubmit = values => {
     signIn(values);
   };
 
   useEffect(() => {
-    if (user) {
+    if (data) {
+      setCookie('jwt', data.jwt);
       navigate('/home');
     }
-  }, [user]);
+  }, [data]);
 
   return (
     <Container class="mt-10" size="sm">

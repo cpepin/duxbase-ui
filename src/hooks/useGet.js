@@ -1,5 +1,7 @@
 import { useState } from 'preact/compat';
 
+import { getCookie } from 'utils/cookies';
+
 function useGet(url) {
   const [data, setData] = useState();
   const [error, setError] = useState();
@@ -14,8 +16,8 @@ function useGet(url) {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${getCookie('jwt')}`,
         },
-        credentials: 'include',
       });
 
       if (response.ok) {

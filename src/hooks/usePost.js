@@ -1,5 +1,7 @@
 import { useState } from 'preact/compat';
 
+import { getCookie } from 'utils/cookies';
+
 function usePost(url) {
   const [data, setData] = useState();
   const [error, setError] = useState();
@@ -14,13 +16,14 @@ function usePost(url) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          Authorization: `Bearer ${getCookie('jwt')}`,
         },
-        credentials: 'include',
         body: JSON.stringify(body),
       });
 
       if (response.ok) {
         const json = await response.json();
+        console.log(json);
         setData(json);
       } else {
         setError(response.statusText);
