@@ -15,28 +15,38 @@
       margin-right: map-get($spacing-sizes, 5);
     }
 
-    &__title,
-    &__event {
-      display: block;
-    }
+    &__description {
+      flex: 1;
+      display: flex;
+      align-items: center;
 
-    &__title {
-      color: $black;
-      font-weight: 500;
-    }
-
-    &__event {
-      font-size: $font-size-1;
-      color: $gray-6;
-
-      &--urgent {
-        color: $yellow-9;
-        font-weight: 700;
+      &__title,
+      &__event {
+        display: block;
       }
-    }
 
-    &__title + &__event {
-      margin-top: map-get($spacing-sizes, 1);
+      &__title {
+        color: $black;
+        font-weight: 500;
+      }
+
+      &__event {
+        font-size: $font-size-1;
+        color: $gray-6;
+
+        &--urgent {
+          color: $yellow-9;
+          font-weight: 700;
+        }
+      }
+
+      &__title + &__event {
+        margin-top: map-get($spacing-sizes, 1);
+      }
+
+      &__arrow {
+        margin-left: auto;
+      }
     }
 
     &:nth-child(odd) {

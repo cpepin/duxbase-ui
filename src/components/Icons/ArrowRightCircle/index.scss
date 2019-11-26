@@ -1,0 +1,14 @@
+@import '../../../sass/abstracts/variables';
+
+.arrow-right-circle {
+  display: block;
+  width: 1.5rem;
+
+  &__primary {
+    fill: $primary-9;
+  }
+
+  &__secondary {
+    fill: $gray-1;
+  }
+}
