@@ -30,7 +30,7 @@ function SignIn() {
 
   return (
     <Container class="mt-10" size="sm">
-      <h1 class="font-size-6">Squad Leader</h1>
+      <h1 class="font-size-6">Duxbase</h1>
 
       <p class="color-gray-7 mt-3">Manage your teams with ease.</p>
 
