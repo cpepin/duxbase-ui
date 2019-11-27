@@ -2,6 +2,7 @@ import { h } from 'preact';
 import { memo, useEffect } from 'preact/compat';
 import { navigate } from '@reach/router';
 
+import Button from 'components/Button';
 import Form from 'components/Form';
 import TextField from 'components/TextField';
 import Container from 'components/Container';
@@ -54,9 +55,9 @@ function SignIn() {
           Register
         </a>
 
-        <button type="submit" class="mt-5 button--fluid">
+        <Button type="submit" class="mt-5" fluid>
           Login
-        </button>
+        </Button>
       </Form>
     </Container>
   );

@@ -2,6 +2,7 @@ import { h } from 'preact';
 import { memo } from 'preact/compat';
 
 import Container from 'components/Container';
+import Button from 'components/Button';
 import Breadcrumbs from 'components/Breadcrumbs';
 import Card from 'components/Card';
 
@@ -16,9 +17,9 @@ function Teams() {
 
       <Breadcrumbs links={teamsCrumbs} class="mt-3" />
 
-      <button class="mt-5 ml-auto button--secondary button--small" type="button">
+      <Button class="mt-5 ml-auto" type="button" small secondary>
         Create team
-      </button>
+      </Button>
 
       <Card class="mt-3">
         <TeamList />
