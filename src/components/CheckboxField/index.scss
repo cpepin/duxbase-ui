@@ -1,0 +1,62 @@
+@import '../../sass/abstracts/variables';
+
+.checkbox {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  label {
+    display: inline-block;
+    margin-left: map-get($spacing-sizes, 1);
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  & input {
+    opacity: 0;
+    height: $font-size-3;
+    width: $font-size-3;
+    padding: 0;
+  }
+
+  & label::before,
+  & label::after {
+    position: absolute;
+  }
+
+  & label::before {
+    content: '';
+    display: inline-block;
+    border-radius: $border-radius;
+
+    height: $font-size-3;
+    width: $font-size-3;
+
+    border: 1px solid $gray-5;
+    top: 0;
+    left: 0;
+  }
+
+  & label::after {
+    content: '';
+    display: inline-block;
+    height: 5px;
+    width: 9px;
+    border-left: 2px solid;
+    border-bottom: 2px solid;
+    left: 3px;
+    top: 5px;
+
+    transform: rotate(-45deg);
+  }
+
+  & input + label::after {
+    content: none;
+  }
+
+  & input:checked + label::after {
+    content: '';
+  }
+}

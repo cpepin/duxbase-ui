@@ -18,6 +18,7 @@ function TextField({ class: className, id, label, name, validate, ...rest }) {
         class={classes}
         id={id}
         aria-describedby={error ? errorId : undefined}
+        type="text"
         {...rest}
         {...fieldProps}
       />

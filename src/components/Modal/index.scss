@@ -1,0 +1,19 @@
+@import '../../sass/abstracts/variables';
+@import '../../sass/abstracts/functions';
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($white, 0.9);
+  padding: map-get($spacing-sizes, 10) map-get($spacing-sizes, 5);
+
+  &__content {
+    background-color: $white;
+    border-radius: $border-radius;
+    box-shadow: getBoxShadow(#000, 3);
+    padding: map-get($spacing-sizes, 4) map-get($spacing-sizes, 5);
+  }
+}
