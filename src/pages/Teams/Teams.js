@@ -16,7 +16,11 @@ function Teams() {
 
       <Breadcrumbs links={teamsCrumbs} class="mt-3" />
 
-      <Card class="mt-5">
+      <button class="mt-5 ml-auto button--secondary button--small" type="button">
+        Create team
+      </button>
+
+      <Card class="mt-3">
         <TeamList />
       </Card>
     </Container>
