@@ -54,7 +54,7 @@ function SignIn() {
           Register
         </a>
 
-        <button type="submit" class="mt-5">
+        <button type="submit" class="mt-5 button--fluid">
           Login
         </button>
       </Form>
