@@ -11,13 +11,12 @@ button,
   align-items: center;
   color: $gray-1;
   font-size: inherit;
-  box-shadow: $box-shadow-2;
+  box-shadow: getBoxShadow(#000, 1);
   cursor: pointer;
 
   &:focus,
   &:active {
     outline: none;
-    border: none;
     text-decoration: underline;
   }
 
