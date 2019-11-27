@@ -7,7 +7,7 @@ function CheckboxField() {
   return (
     <div class="checkbox">
       <input type="checkbox" id="checkbox" />
-      <label for="checkbox">Something</label>
+      <label for="checkbox">Player manager</label>
     </div>
   );
 }
