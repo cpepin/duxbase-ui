@@ -8,7 +8,13 @@ function ArrowRightCircle({ class: className, ...rest }) {
   const classes = classnames('arrow-right-circle', className);
 
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class={classes} {...rest}>
+    <svg
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class={classes}
+      {...rest}
+    >
       <circle cx="12" cy="12" r="10" class="arrow-right-circle__primary" />
       <path
         class="arrow-right-circle__secondary"

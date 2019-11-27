@@ -8,7 +8,13 @@ function ChevronRight({ class: className, fill, ...rest }) {
   const classes = classnames('chevron-right-icon', className);
 
   return (
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class={classes} {...rest}>
+    <svg
+      role="img"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      class={classes}
+      {...rest}
+    >
       <path
         // eslint-disable-next-line react/no-unknown-property
         fill-rule="evenodd"
