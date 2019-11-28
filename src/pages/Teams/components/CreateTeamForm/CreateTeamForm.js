@@ -9,15 +9,27 @@ import CheckboxField from 'components/CheckboxField';
 
 import { isRequired } from 'utils/validation';
 
+import usePost from 'hooks/usePost';
+
+import { teams } from 'routes/teams';
+
 function CreateTeamForm({ onCancelForm }) {
+  const { post: createTeam, data } = usePost(teams());
+
+  const handleSubmit = async values => {
+    await createTeam(values);
+    onCancelForm();
+  };
+
   return (
-    <Form class="mt-6">
+    <Form class="mt-6" onSubmit={handleSubmit}>
       <FieldContainer>
         <TextField label="Team Name" id="name" name="name" field="name" validate={isRequired} />
       </FieldContainer>
 
       <FieldContainer>
         <CheckboxField
+          checked
           label="I am a player-manager for this team."
           id="player"
           name="player"
