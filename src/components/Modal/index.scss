@@ -2,18 +2,42 @@
 @import '../../sass/abstracts/functions';
 
 .modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba($white, 0.9);
-  padding: map-get($spacing-sizes, 10) map-get($spacing-sizes, 5);
+  display: none;
 
-  &__content {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($white, 0.9);
+    padding: map-get($spacing-sizes, 10) map-get($spacing-sizes, 5) 0;
+  }
+
+  &__container {
+    position: relative;
     background-color: $white;
     border-radius: $border-radius;
     box-shadow: getBoxShadow(#000, 3);
     padding: map-get($spacing-sizes, 4) map-get($spacing-sizes, 5);
+    border-left: 3px solid $pink-9;
+  }
+
+  &__close {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    right: map-get($spacing-sizes, 2);
+    top: map-get($spacing-sizes, 2);
+
+    &:focus {
+      border: 1px dashed $primary-10;
+    }
+  }
+
+  &.is-open {
+    display: block;
   }
 }

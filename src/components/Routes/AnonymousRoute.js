@@ -1,9 +1,10 @@
 import { h } from 'preact';
+import { Route } from 'react-router-dom';
 
 import useSetup from 'hooks/useSetup';
 import useUser from 'hooks/useUser';
 
-function AnonymousRoute({ component: Component, ...rest }) {
+function AnonymousRoute({ component, ...rest }) {
   const { user } = useUser();
   useSetup(() => {
     if (user) {
@@ -11,7 +12,7 @@ function AnonymousRoute({ component: Component, ...rest }) {
     }
   });
 
-  return <Component {...rest} />;
+  return <Route component={component} {...rest} />;
 }
 
 export default AnonymousRoute;

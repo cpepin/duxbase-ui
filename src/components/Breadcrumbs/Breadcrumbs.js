@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { memo } from 'preact/compat';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 
 import kebabCase from 'utils/kebabCase';
 import ChevronRight from 'components/Icons/ChevronRight';

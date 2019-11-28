@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { useCallback, useMemo, useEffect } from 'preact/compat';
-import { navigate } from '@reach/router';
+import { useHistory } from 'react-router-dom';
 
 import UserContext from 'contexts/UserContext';
 
@@ -9,6 +9,7 @@ import useGet from 'hooks/useGet';
 import { me } from 'routes/auth';
 
 function UserProvider({ children }) {
+  const history = useHistory();
   const { get, data: user, isLoading, error } = useGet(me());
 
   const fetchUser = useCallback(() => {
@@ -17,7 +18,7 @@ function UserProvider({ children }) {
 
   useEffect(() => {
     if (error) {
-      navigate('/');
+      history.push('/');
     }
   }, [error]);
 

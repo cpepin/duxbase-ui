@@ -26,7 +26,9 @@ function Form({ children, onSubmit: onSubmitProp = () => {}, ...rest }) {
         field.fieldState.current.touched = true;
         field.fieldState.current.dirty = true;
         field.triggerValidation();
-        values[name] = field.inputRef.current.value;
+        values[name] = field.fieldState.current.isCheckbox
+          ? field.inputRef.current.checked
+          : field.inputRef.current.value;
       });
 
       if (!formState.current.error) {

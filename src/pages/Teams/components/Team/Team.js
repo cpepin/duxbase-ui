@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { memo, useMemo } from 'preact/compat';
-import { Link } from '@reach/router';
+import { Link } from 'react-router-dom';
 
 import TeamIcon from 'components/Icons/Team';
 import ArrowRightCircleIcon from 'components/Icons/ArrowRightCircle';

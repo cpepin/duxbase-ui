@@ -1,21 +1,43 @@
 import { h } from 'preact';
 import { memo, useMemo } from 'preact/compat';
 
-import uuid from 'utils/uuid';
-
 import Container from 'components/Container';
+import Close from 'components/Icons/Close';
 
 import './index.scss';
 
-function Modal({ children }) {
-  const modalId = useMemo(() => uuid(), []);
-  const ariaLabeledBy = useMemo(() => `${modalId}_label`, [modalId]);
+function Modal({ id, title: Title, children }) {
+  const modalTitleId = useMemo(() => `${id}-title`, [id]);
+  const modalContentId = useMemo(() => `${id}-content`, [id]);
 
   return (
-    <div class="modal" role="dialog" id={modalId} aria-labelledby={ariaLabeledBy} aria-modal="true">
-      <Container style={{ width: '100%' }}>
-        <div class="modal__content">{children}</div>
-      </Container>
+    <div id={id} aria-hidden="true" class="modal">
+      <div tabIndex="-1" data-micromodal-close class="modal__overlay">
+        <Container
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby={modalTitleId}
+          class="modal__container"
+        >
+          <header class="mt-3">
+            <h2 id={modalTitleId} class="font-size-5">
+              <Title />
+            </h2>
+            <button
+              class="modal__close"
+              type="button"
+              aria-label="Close modal"
+              data-micromodal-close
+            >
+              <Close data-micromodal-close />
+            </button>
+          </header>
+
+          <div id={modalContentId} class="mt-5">
+            {children}
+          </div>
+        </Container>
+      </div>
     </div>
   );
 }

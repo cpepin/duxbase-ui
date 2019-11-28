@@ -8,4 +8,8 @@ function getApiRoute(path) {
   return isDev() ? `http://localhost:3000${path}` : `https://api.duxbase.com${path}`;
 }
 
-export { getApiRoute };
+function isCordova() {
+  return !!window.cordova;
+}
+
+export { getApiRoute, isCordova };

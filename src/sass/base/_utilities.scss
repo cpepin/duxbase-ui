@@ -24,6 +24,10 @@
   @include build-spacing-util(margin-top);
 }
 
+.ml {
+  @include build-spacing-util(margin-left);
+}
+
 .ml-auto {
   margin-left: auto !important;
 }
@@ -40,4 +44,8 @@
 
 .d-flex-column {
   flex-direction: column !important;
+}
+
+.d-inline-block {
+  display: inline-block !important;
 }

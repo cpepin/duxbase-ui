@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { memo, useEffect } from 'preact/compat';
-import { navigate } from '@reach/router';
+import { useHistory } from 'react-router-dom';
 
 import Button from 'components/Button';
 import Form from 'components/Form';
@@ -16,16 +16,17 @@ import { setCookie } from 'utils/cookies';
 import { login } from 'routes/auth';
 
 function SignIn() {
+  const history = useHistory();
   const { post: signIn, data } = usePost(login());
 
-  const handleSubmit = values => {
-    signIn(values);
+  const handleSubmit = ({ email, password }) => {
+    signIn({ email: email.toLowerCase(), password });
   };
 
   useEffect(() => {
     if (data) {
       setCookie('jwt', data.jwt);
-      navigate('/home');
+      history.push('/home');
     }
   }, [data]);
 

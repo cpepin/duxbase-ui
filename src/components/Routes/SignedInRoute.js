@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { Route } from 'react-router-dom';
 
 import useSetup from 'hooks/useSetup';
 import useUser from 'hooks/useUser';
@@ -14,7 +15,7 @@ function SignedInRoute({ component: Component, ...rest }) {
     }
   });
 
-  return !isLoading && !error ? <Component {...rest} /> : <Spinner />;
+  return <Route render={() => (!isLoading && !error ? <Component /> : <Spinner />)} {...rest} />;
 }
 
 export default SignedInRoute;

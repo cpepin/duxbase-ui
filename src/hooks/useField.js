@@ -6,6 +6,7 @@ import FormContext from 'contexts/FormContext';
 const defaultFieldState = {
   dirty: false,
   touched: false,
+  isCheckbox: false,
 };
 
 function useField({
@@ -13,18 +14,23 @@ function useField({
   validateOnBlur = true,
   validateOnDirty = false,
   name,
+  isCheckbox = false,
 }) {
   const [error, setError] = useState(false);
   const { formState, registerField } = useContext(FormContext);
   const inputRef = useRef();
-  const fieldState = useRef(defaultFieldState);
+  const fieldState = useRef({ ...defaultFieldState, isCheckbox });
+
+  const getCurrentInputValue = useCallback(() => {
+    return isCheckbox ? inputRef.current.checked : inputRef.current.value;
+  }, [isCheckbox]);
 
   const triggerValidation = useCallback(() => {
-    const newError = validate(inputRef.current.value);
+    const newError = validate(getCurrentInputValue());
 
     setError(newError);
     formState.current.error = newError;
-  }, [validate, formState, setError]);
+  }, [validate, formState, setError, getCurrentInputValue]);
 
   useSetup(() => {
     registerField(name, { fieldState, inputRef, triggerValidation });
@@ -33,9 +39,9 @@ function useField({
   const getState = useCallback(
     () => ({
       ...fieldState.current,
-      value: inputRef.current.value,
+      value: getCurrentInputValue(),
     }),
-    [fieldState, inputRef],
+    [fieldState, inputRef, getCurrentInputValue],
   );
 
   const onBlur = useCallback(() => {

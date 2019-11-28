@@ -1,6 +1,7 @@
 @import '../../sass/abstracts/variables';
+@import '../../sass/abstracts/functions';
 
-.checkbox {
+.checkbox-field {
   position: relative;
   display: flex;
   align-items: center;
@@ -59,6 +60,16 @@
   & input:checked + label::after {
     content: '';
     color: $white;
+  }
+
+  & input:active + label::before,
+  & input:focus + label::before {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    outline: none;
+    box-shadow: getBoxShadow($primary-9, 2);
   }
 
   & input:checked + label::before {
