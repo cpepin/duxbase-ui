@@ -13,12 +13,12 @@ import usePost from 'hooks/usePost';
 
 import { teams } from 'routes/teams';
 
-function CreateTeamForm({ onCancelForm }) {
-  const { post: createTeam, data } = usePost(teams());
+function CreateTeamForm({ onCancel, onSubmit }) {
+  const { post: createTeam } = usePost(teams());
 
   const handleSubmit = async values => {
     await createTeam(values);
-    onCancelForm();
+    onSubmit();
   };
 
   return (
@@ -38,7 +38,7 @@ function CreateTeamForm({ onCancelForm }) {
       </FieldContainer>
 
       <div class="d-flex mt-7">
-        <Button type="button" secondary class="ml-auto" onClick={onCancelForm}>
+        <Button type="button" secondary class="ml-auto" onClick={onCancel}>
           Cancel
         </Button>
         <Button type="submit" class="ml-3">
