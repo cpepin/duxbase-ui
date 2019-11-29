@@ -17,6 +17,8 @@ function Form({ children, onSubmit: onSubmitProp = () => {}, ...rest }) {
       e.preventDefault();
       formState.current.dirty = true;
       formState.current.touched = true;
+      // Clear existing error
+      formState.current.error = '';
 
       const { fields } = formState.current;
       const values = {};
@@ -29,6 +31,10 @@ function Form({ children, onSubmit: onSubmitProp = () => {}, ...rest }) {
         values[name] = field.fieldState.current.isCheckbox
           ? field.inputRef.current.checked
           : field.inputRef.current.value;
+
+        if (field.fieldState.current.error) {
+          formState.current.error = field.fieldState.current.error;
+        }
       });
 
       if (!formState.current.error) {

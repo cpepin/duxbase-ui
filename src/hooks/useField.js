@@ -7,6 +7,7 @@ const defaultFieldState = {
   dirty: false,
   touched: false,
   isCheckbox: false,
+  error: '',
 };
 
 function useField({
@@ -16,10 +17,15 @@ function useField({
   name,
   isCheckbox = false,
 }) {
-  const [error, setError] = useState(false);
+  const [error, _setError] = useState(false);
   const { formState, registerField } = useContext(FormContext);
   const inputRef = useRef();
   const fieldState = useRef({ ...defaultFieldState, isCheckbox });
+
+  const setError = newError => {
+    fieldState.current.error = newError;
+    _setError(newError);
+  };
 
   const getCurrentInputValue = useCallback(() => {
     return isCheckbox ? inputRef.current.checked : inputRef.current.value;
@@ -29,7 +35,6 @@ function useField({
     const newError = validate(getCurrentInputValue());
 
     setError(newError);
-    formState.current.error = newError;
   }, [validate, formState, setError, getCurrentInputValue]);
 
   useSetup(() => {
