@@ -16,14 +16,13 @@ function usePost(url) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${getCookie('jwt')}`,
+          Authorization: `Bearer ${getCookie('accessToken')}`,
         },
         body: JSON.stringify(body),
       });
 
       if (response.ok) {
         const json = await response.json();
-        console.log(json);
         setData(json);
       } else {
         setError(response.statusText);

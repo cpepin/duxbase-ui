@@ -9,7 +9,7 @@
 
 .spinner {
   &__icon {
-    @include loader01;
+    @include loader01($size: 18px, $border-size: 2px);
   }
 
   &__label {

@@ -25,7 +25,7 @@ function SignIn() {
 
   useEffect(() => {
     if (data) {
-      setCookie('jwt', data.jwt);
+      setCookie('accessToken', data.accessToken);
       history.push('/home');
     }
   }, [data]);

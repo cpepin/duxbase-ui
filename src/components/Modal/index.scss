@@ -29,6 +29,7 @@
     border: none;
     box-shadow: none;
     padding: 0;
+    min-width: 0;
     right: map-get($spacing-sizes, 2);
     top: map-get($spacing-sizes, 2);
 
