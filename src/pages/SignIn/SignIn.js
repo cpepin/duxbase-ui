@@ -11,7 +11,7 @@ import FieldContainer from 'components/FieldContainer';
 import usePost from 'hooks/usePost';
 
 import { isEmail, isRequired } from 'utils/validation';
-import { setCookie } from 'utils/cookies';
+import { setAccessToken, setRefreshToken } from 'utils/token';
 
 import { login } from 'routes/auth';
 
@@ -25,8 +25,8 @@ function SignIn() {
 
   useEffect(() => {
     if (data) {
-      setCookie('accessToken', data.accessToken);
-      setCookie('refreshToken', data.refreshToken);
+      setAccessToken(data.accessToken);
+      setRefreshToken(data.refreshToken);
       history.push('/home');
     }
   }, [data]);

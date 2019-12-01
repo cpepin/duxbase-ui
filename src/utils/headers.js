@@ -1,10 +1,10 @@
-import { getCookie } from 'utils/cookies';
+import { getAccessToken, getRefreshToken } from 'utils/token';
 
 function getStandardHeaders() {
   return {
     'Content-Type': 'application/json',
-    Authorization: `Bearer ${getCookie('accessToken')}`,
-    'x-refresh-token': getCookie('refreshToken'),
+    Authorization: `Bearer ${getAccessToken()}`,
+    'x-refresh-token': getRefreshToken(),
   };
 }
 

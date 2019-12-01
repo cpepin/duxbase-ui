@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'preact/compat';
 
 import { getStandardHeaders } from 'utils/headers';
-import { refreshAccessToken } from 'utils/token';
+import { refreshAccessToken, setAccessToken } from 'utils/token';
 import { setCookie } from 'utils/cookies';
 
 function useFetch(url) {
@@ -18,7 +18,7 @@ function useFetch(url) {
         });
 
         if (response.headers.get('x-access-token')) {
-          setCookie('accessToken', response.headers.get('x-access-token'));
+          setAccessToken(response.headers.get('x-access-token'));
         }
 
         if (response.ok) {
