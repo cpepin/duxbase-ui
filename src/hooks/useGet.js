@@ -1,6 +1,6 @@
 import { useState } from 'preact/compat';
 
-import { getCookie } from 'utils/cookies';
+import { getStandardHeaders } from 'utils/headers';
 
 function useGet(url) {
   const [data, setData] = useState();
@@ -14,10 +14,7 @@ function useGet(url) {
     try {
       const response = await fetch(url, {
         method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${getCookie('accessToken')}`,
-        },
+        headers: getStandardHeaders(),
       });
 
       if (response.ok) {

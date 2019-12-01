@@ -26,6 +26,7 @@ function SignIn() {
   useEffect(() => {
     if (data) {
       setCookie('accessToken', data.accessToken);
+      setCookie('refreshToken', data.refreshToken);
       history.push('/home');
     }
   }, [data]);
