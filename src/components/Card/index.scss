@@ -5,4 +5,12 @@
   background-color: $white;
   box-shadow: getBoxShadow($black, 2);
   border-radius: $border-radius;
+
+  &--fluid {
+    height: 100%;
+  }
+
+  &--padded {
+    padding: map-get($spacing-sizes, 5) map-get($spacing-sizes, 6);
+  }
 }

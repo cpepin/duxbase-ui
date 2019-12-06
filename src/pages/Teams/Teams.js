@@ -36,11 +36,14 @@ function Teams() {
     <Container size="sm" class="mt-8">
       <h1 class="font-size-6">Teams</h1>
 
-      <Breadcrumbs links={teamsCrumbs} class="mt-3" />
+      <Breadcrumbs links={teamsCrumbs} />
 
-      <Button class="mt-5 ml-auto" type="button" small secondary onClick={show}>
-        Create team
-      </Button>
+      {/* Thanks safari */}
+      <div>
+        <Button class="mt-5 ml-auto" type="button" small secondary onClick={show}>
+          Create team
+        </Button>
+      </div>
 
       <Modal id={createTeamModalId} title={CreateModalTitle}>
         <p>Create a new team to manage players and events.</p>

@@ -8,11 +8,11 @@ import ArrowRightCircleIcon from 'components/Icons/ArrowRightCircle';
 import './index.scss';
 
 function Team({ team }) {
-  const teamUrl = useMemo(() => `/teams/${team.id}`, [team]);
+  const rosterUrl = useMemo(() => `/teams/${team.id}/roster`, [team]);
 
   return (
     <li class="team-list__team">
-      <Link to={teamUrl}>
+      <Link to={rosterUrl}>
         {/* <NotificationContainer class="team-list__item__icon"> */}
         <TeamIcon class="team-list__team__icon" />
         {/* </NotificationContainer> */}

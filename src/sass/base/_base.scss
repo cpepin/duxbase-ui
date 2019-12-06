@@ -6,15 +6,34 @@
   box-sizing: inherit;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   color: $black;
   background-color: $background-color;
   padding: 0 map-get($spacing-sizes, 5);
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 
   font-family: 'Inter', Helvetica, sans-serif;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
   font-size: $default-font-size;
+}
+
+div[id='app'] {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
 }
