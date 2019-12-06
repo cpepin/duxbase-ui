@@ -10,7 +10,8 @@ function setAccessToken(accessToken) {
 }
 
 function setRefreshToken(refreshToken) {
-  setCookie(REFRESH_TOKEN_COOKIE, refreshToken);
+  // setting age to some really large arbitrary value
+  setCookie(REFRESH_TOKEN_COOKIE, refreshToken, 1000);
 }
 
 function getAccessToken() {
