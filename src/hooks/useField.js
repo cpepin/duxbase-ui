@@ -28,6 +28,10 @@ function useField({
   };
 
   const getCurrentInputValue = useCallback(() => {
+    if (!inputRef.current) {
+      return undefined;
+    }
+
     return isCheckbox ? inputRef.current.checked : inputRef.current.value;
   }, [isCheckbox]);
 
