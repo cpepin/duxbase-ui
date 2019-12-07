@@ -2,9 +2,18 @@ import { h } from 'preact';
 import { useMemo, memo, Fragment } from 'preact/compat';
 import { useParams } from 'react-router-dom';
 
-import BoxList, { BoxListItem } from 'components/BoxList';
+import Button from 'components/Button';
+import BoxList from 'components/BoxList';
 import Card from 'components/Card';
 import Breadcrumbs from 'components/Breadcrumbs';
+
+import Player from '../Player';
+import './index.scss';
+
+const players = [
+  { firstName: 'Cameron', lastName: 'Pepin', emailAddress: 'pepin.cameron@gmail.com' },
+  { firstName: 'Drew', lastName: 'Pepin', emailAddress: 'drewpepin1995@gmail.com' },
+];
 
 function Roster() {
   const { id } = useParams();
@@ -24,16 +33,17 @@ function Roster() {
       <Card fluid padded class="mt-4">
         <h2 class="font-size-5">Roster</h2>
 
-        <BoxList class="mt-4">
-          <BoxListItem>Cam Pepin</BoxListItem>
-          <BoxListItem>Drew Pepin</BoxListItem>
-          <BoxListItem>Matt Keene</BoxListItem>
-          <BoxListItem>Cody Stevens</BoxListItem>
-          <BoxListItem>Alex Turgeon</BoxListItem>
-          <BoxListItem>Logan Lachapelle</BoxListItem>
-          <BoxListItem>Sean Olsten</BoxListItem>
-          <BoxListItem>Kory Furullo</BoxListItem>
-          <BoxListItem>Branden Smith</BoxListItem>
+        {/* Thanks safari */}
+        <div>
+          <Button class="ml-auto" type="button" small secondary>
+            Add player
+          </Button>
+        </div>
+
+        <BoxList class="roster mt-4">
+          {players.map(player => (
+            <Player player={player} />
+          ))}
         </BoxList>
       </Card>
     </Fragment>

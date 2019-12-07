@@ -1,0 +1,35 @@
+@import '../../../../sass/abstracts/variables';
+
+.roster__player {
+  position: relative;
+
+  &__description {
+    &__name {
+      display: block;
+      font-weight: 500;
+      font-size: $font-size-2;
+
+      @media only screen and (min-width: 380px) {
+        font-size: $font-size-3 !important;
+      }
+    }
+
+    &__email {
+      display: block;
+      margin-top: map-get($spacing-sizes, 1);
+
+      font-size: $font-size-1;
+
+      @media only screen and (min-width: 380px) {
+        font-size: $font-size-2 !important;
+      }
+    }
+  }
+
+  &__more-options {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -0.25rem;
+  }
+}

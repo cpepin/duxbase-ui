@@ -13,7 +13,6 @@
   &:not(&--link) {
     display: flex;
     align-items: center;
-    text-decoration: none;
     padding: map-get($spacing-sizes, 4) map-get($spacing-sizes, 5);
   }
 

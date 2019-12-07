@@ -1,0 +1,9 @@
+@import '../../../sass/abstracts/variables';
+
+.icon-dots-vertical {
+  width: 2rem;
+
+  &__path {
+    fill: $primary-9;
+  }
+}
