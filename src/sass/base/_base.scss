@@ -13,7 +13,7 @@ html {
 body {
   color: $black;
   background-color: $background-color;
-  padding: 0 map-get($spacing-sizes, 5);
+  padding: 0 map-get($spacing-sizes, 3);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -24,6 +24,10 @@ body {
   -webkit-font-smoothing: antialiased;
   font-weight: 400;
   font-size: $default-font-size;
+
+  @media only screen and (min-width: 380px) {
+    padding: 0 map-get($spacing-sizes, 5);
+  }
 }
 
 div[id='app'] {
