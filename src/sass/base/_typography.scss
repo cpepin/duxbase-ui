@@ -30,3 +30,7 @@ h5,
 h6 {
   font-family: 'Roboto', Helvetica, sans-serif;
 }
+
+p + p {
+  margin-top: map-get($spacing-sizes, 4);
+}

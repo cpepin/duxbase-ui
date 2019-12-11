@@ -4,8 +4,10 @@ import classnames from 'classnames';
 
 import './index.scss';
 
-function FieldContainer({ children, class: className, ...rest }) {
-  const classes = classnames('field-container', className);
+function FieldContainer({ children, class: className, inline, ...rest }) {
+  const classes = classnames('field-container', className, {
+    'field-container--inline': inline,
+  });
 
   return (
     <div class={classes} {...rest}>

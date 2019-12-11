@@ -1,4 +1,4 @@
-import { h, Fragment } from 'preact';
+import { h } from 'preact';
 import { memo } from 'preact/compat';
 import classnames from 'classnames';
 
@@ -12,7 +12,7 @@ function TextField({ class: className, id, label, name, validate, ...rest }) {
   const errorId = `${id}-error`;
 
   return (
-    <Fragment>
+    <div>
       <label for={id}>{label}</label>
       <input
         class={classes}
@@ -23,7 +23,7 @@ function TextField({ class: className, id, label, name, validate, ...rest }) {
         {...fieldProps}
       />
       {error && <FieldAlert id={errorId}>{error}</FieldAlert>}
-    </Fragment>
+    </div>
   );
 }
 

@@ -12,6 +12,7 @@
     bottom: 0;
     background-color: rgba($white, 0.9);
     padding: map-get($spacing-sizes, 10) map-get($spacing-sizes, 5) 0;
+    overflow-y: scroll;
   }
 
   &__container {

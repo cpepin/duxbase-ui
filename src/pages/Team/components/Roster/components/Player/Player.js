@@ -11,6 +11,7 @@ function Player({ player }) {
       <div class="roster__player__description">
         <span class="roster__player__description__name">
           {player.firstName}
+          &nbsp;
           {player.lastName}
         </span>
         <span class="roster__player__description__email">{player.emailAddress}</span>

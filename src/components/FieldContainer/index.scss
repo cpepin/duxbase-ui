@@ -1,7 +1,21 @@
 @import '../../sass/abstracts/variables';
 
 .field-container {
-  & + & {
+  &--inline {
+    display: flex;
+    margin-top: map-get($spacing-sizes, 4);
+  }
+
+  /* TODO: refactor div to input container */
+  &--inline > div {
+    flex: 1;
+  }
+
+  &--inline > div + div {
+    margin-left: 2rem;
+  }
+
+  &:not(&--inline) + &:not(&--inline) {
     margin-top: map-get($spacing-sizes, 4);
   }
 }
