@@ -1,4 +1,4 @@
-import { createElement, useCallback, useMemo, useRef } from 'preact/compat';
+import { createElement, useCallback, useMemo, useRef, memo } from 'preact/compat';
 
 import FormContext from 'contexts/FormContext';
 
@@ -28,9 +28,13 @@ function Form({ children, onSubmit: onSubmitProp = () => {}, ...rest }) {
         field.fieldState.current.touched = true;
         field.fieldState.current.dirty = true;
         field.triggerValidation();
-        values[name] = field.fieldState.current.isCheckbox
-          ? field.inputRef.current.checked
-          : field.inputRef.current.value;
+        values[name] = undefined;
+
+        if (field.inputRef.current) {
+          values[name] = field.fieldState.current.isCheckbox
+            ? field.inputRef.current.checked
+            : field.inputRef.current.value;
+        }
 
         if (field.fieldState.current.error) {
           formState.current.error = field.fieldState.current.error;
@@ -51,7 +55,18 @@ function Form({ children, onSubmit: onSubmitProp = () => {}, ...rest }) {
     [formState],
   );
 
-  const value = useMemo(() => ({ formState, registerField }), [formState, registerField]);
+  const deregisterField = useCallback(
+    name => {
+      delete formState.current.fields[name];
+    },
+    [formState],
+  );
+
+  const value = useMemo(() => ({ formState, registerField, deregisterField }), [
+    formState,
+    registerField,
+    deregisterField,
+  ]);
 
   return createElement(
     FormContext.Provider,
@@ -60,4 +75,4 @@ function Form({ children, onSubmit: onSubmitProp = () => {}, ...rest }) {
   );
 }
 
-export default Form;
+export default memo(Form);

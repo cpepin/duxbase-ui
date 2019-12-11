@@ -1,4 +1,4 @@
-import { useCallback, useContext, useMemo, useRef, useState } from 'preact/compat';
+import { useCallback, useContext, useMemo, useRef, useState, useEffect } from 'preact/compat';
 
 import useSetup from 'hooks/useSetup';
 import FormContext from 'contexts/FormContext';
@@ -18,9 +18,15 @@ function useField({
   isCheckbox = false,
 }) {
   const [error, _setError] = useState(false);
-  const { formState, registerField } = useContext(FormContext);
+  const { formState, registerField, deregisterField } = useContext(FormContext);
   const inputRef = useRef();
   const fieldState = useRef({ ...defaultFieldState, isCheckbox });
+
+  useEffect(() => {
+    return () => {
+      deregisterField(name);
+    };
+  });
 
   const setError = newError => {
     fieldState.current.error = newError;
