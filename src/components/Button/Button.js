@@ -12,6 +12,7 @@ function Button({
   loading,
   small,
   type = 'button',
+  text,
   ...rest
 }) {
   const classes = classnames(
@@ -20,6 +21,7 @@ function Button({
       'button--secondary': secondary,
       'button--fluid': fluid,
       'button--small': small,
+      'button--text': text,
     },
     className,
   );

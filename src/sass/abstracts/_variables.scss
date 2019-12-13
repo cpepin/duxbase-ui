@@ -59,6 +59,7 @@ $border-radius: 3px;
 /* Globals */
 $black: $gray-10;
 $white: #fff;
+$white-overlay: rgba($white, 0.9);
 $background-color: $gray-2;
 $default-font-size: $font-size-3;
 $container-width: map-get($spacing-sizes, 16);

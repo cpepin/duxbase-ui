@@ -1,13 +1,21 @@
 @import '../../../../../../sass/abstracts/variables';
+@import '../../../../../../sass/abstracts/functions';
+@import '../../../../../../sass//abstracts/mixins';
 
 .roster__player {
   position: relative;
+
+  &--selected &__description__name {
+    color: $gray-10;
+    font-weight: 700;
+  }
 
   &__description {
     &__name {
       display: block;
       font-weight: 500;
       font-size: $font-size-2;
+      color: $gray-7;
 
       @media only screen and (min-width: 380px) {
         font-size: $font-size-3 !important;
@@ -31,5 +39,31 @@
     top: 50%;
     transform: translateY(-50%);
     right: -0.25rem;
+    padding: 0;
+    box-shadow: none;
+    background: transparent;
+    min-width: inherit;
+  }
+
+  &__menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: flex;
+    background-color: $white;
+    z-index: 100;
+    padding: map-get($spacing-sizes, 4) map-get($spacing-sizes, 5);
+    box-shadow: getBoxShadow($black, 2);
+
+    button + button {
+      margin-left: map-get($spacing-sizes, 3);
+    }
+
+    &:after {
+      @include triangle('up', map-get($spacing-sizes, 2), $white);
+      top: -#{map-get($spacing-sizes, 2)};
+      right: 5px;
+    }
   }
 }

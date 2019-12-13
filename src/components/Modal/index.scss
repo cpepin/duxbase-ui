@@ -10,7 +10,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba($white, 0.9);
+    background-color: $white-overlay;
     padding: map-get($spacing-sizes, 10) map-get($spacing-sizes, 5) 0;
     overflow-y: scroll;
   }

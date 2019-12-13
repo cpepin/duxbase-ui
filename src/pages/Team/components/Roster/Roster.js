@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useMemo, memo, Fragment, useEffect } from 'preact/compat';
+import { useMemo, memo, Fragment, useEffect, useState, useCallback } from 'preact/compat';
 import { useParams } from 'react-router-dom';
 
 import Button from 'components/Button';
@@ -21,6 +21,7 @@ const createPlayerModalId = 'create-player-modal';
 const CreateModalTitle = memo(() => <Fragment>Create Player</Fragment>);
 
 function Roster() {
+  const [selectedPlayerId, setSelectedPlayerId] = useState();
   const { show, close: handleClose } = useModal(createPlayerModalId);
   const { id } = useParams();
   const { data: players, get: getPlayers } = useGet(playersForTeam(id));
@@ -37,6 +38,19 @@ function Roster() {
     getPlayers();
     handleClose();
   };
+
+  const handleSelectedPlayerClick = useCallback(
+    newId => {
+      setSelectedPlayerId(currId => {
+        if (newId === currId) {
+          // clear selected state
+          return undefined;
+        }
+        return newId;
+      });
+    },
+    [setSelectedPlayerId],
+  );
 
   useEffect(() => {
     getPlayers();
@@ -57,7 +71,15 @@ function Roster() {
         </div>
 
         <BoxList class="roster mt-4">
-          {players && players.map(player => <Player player={player} />)}
+          {players &&
+            players.map(player => (
+              <Player
+                key={player.id}
+                player={player}
+                selected={player.id === selectedPlayerId}
+                onSelectedPlayerClick={handleSelectedPlayerClick}
+              />
+            ))}
         </BoxList>
       </Card>
 
