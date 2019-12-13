@@ -10,6 +10,14 @@
     font-weight: 700;
   }
 
+  &:nth-child(even) &__menu {
+    background-color: $gray-1;
+
+    &:after {
+      @include triangle('up', map-get($spacing-sizes, 2), $gray-1);
+    }
+  }
+
   &__description {
     &__name {
       display: block;
@@ -53,7 +61,12 @@
     display: flex;
     background-color: $white;
     z-index: 100;
-    padding: map-get($spacing-sizes, 4) map-get($spacing-sizes, 5);
+
+    @media only screen and (min-width: 380px) {
+      padding: map-get($spacing-sizes, 4) map-get($spacing-sizes, 5);
+    }
+
+    padding: map-get($spacing-sizes, 3) map-get($spacing-sizes, 4);
     box-shadow: getBoxShadow($black, 2);
 
     button + button {
