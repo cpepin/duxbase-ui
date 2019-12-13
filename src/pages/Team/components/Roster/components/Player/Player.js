@@ -46,7 +46,7 @@ function Player({ id, player, selected, onSelectedPlayerClick }) {
           <Button role="menuitem" small>
             Edit
           </Button>
-          <Button role="menuitem" small secondary>
+          <Button role="menuitem" small secondary onClick={handleClick}>
             Cancel
           </Button>
           <Button role="menuitem" small text>
