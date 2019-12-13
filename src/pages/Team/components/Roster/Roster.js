@@ -1,6 +1,7 @@
 import { h } from 'preact';
 import { useMemo, memo, Fragment, useEffect, useState, useCallback } from 'preact/compat';
 import { useParams } from 'react-router-dom';
+import Micromodal from 'micromodal';
 
 import Button from 'components/Button';
 import BoxList from 'components/BoxList';
@@ -19,6 +20,8 @@ import './index.scss';
 
 const createPlayerModalId = 'create-player-modal';
 const CreateModalTitle = memo(() => <Fragment>Create Player</Fragment>);
+
+const getPlayerModalId = id => `roster-player-modal-${id}`;
 
 function Roster() {
   const [selectedPlayerId, setSelectedPlayerId] = useState();
@@ -42,10 +45,16 @@ function Roster() {
   const handleSelectedPlayerClick = useCallback(
     newId => {
       setSelectedPlayerId(currId => {
+        if (currId) {
+          Micromodal.close(currId);
+        }
+
         if (newId === currId) {
           // clear selected state
           return undefined;
         }
+
+        Micromodal.show(newId);
         return newId;
       });
     },
@@ -74,9 +83,10 @@ function Roster() {
           {players &&
             players.map(player => (
               <Player
+                id={getPlayerModalId(player.id)}
                 key={player.id}
                 player={player}
-                selected={player.id === selectedPlayerId}
+                selected={getPlayerModalId(player.id) === selectedPlayerId}
                 onSelectedPlayerClick={handleSelectedPlayerClick}
               />
             ))}

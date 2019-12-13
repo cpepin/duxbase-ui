@@ -23,6 +23,14 @@
     }
   }
 
+  &__modal {
+    display: none;
+
+    &.is-open {
+      display: block;
+    }
+  }
+
   &__description {
     &__name {
       display: block;
@@ -56,6 +64,11 @@
     box-shadow: none;
     background: transparent;
     min-width: inherit;
+    border-radius: 50%;
+
+    &:focus {
+      border: 1px dashed $primary-9;
+    }
   }
 
   &__menu {
@@ -81,7 +94,7 @@
     &:after {
       @include triangle('up', map-get($spacing-sizes, 2), $white);
       top: -#{map-get($spacing-sizes, 2)};
-      right: 5px;
+      right: 2px;
     }
   }
 }

@@ -5,18 +5,19 @@ import classnames from 'classnames';
 import { BoxListItem } from 'components/BoxList';
 import Button from 'components/Button';
 import IconDotsVertical from 'components/Icons/IconDotsVertical';
+import Close from 'components/Icons/Close';
 
 import './index.scss';
 
-function Player({ player, selected, onSelectedPlayerClick }) {
+function Player({ id, player, selected, onSelectedPlayerClick }) {
   const fullName = useMemo(() => `${player.firstName} ${player.lastName}`, [
     player.firstName,
     player.lastName,
   ]);
 
   const handleClick = useCallback(() => {
-    onSelectedPlayerClick(player.id);
-  }, [player.id]);
+    onSelectedPlayerClick(id);
+  }, [id]);
 
   const classes = useMemo(
     () => classnames('roster__player', { 'roster__player--selected': selected }),
@@ -37,10 +38,10 @@ function Player({ player, selected, onSelectedPlayerClick }) {
         aria-expanded={selected}
         onClick={handleClick}
       >
-        <IconDotsVertical />
+        {selected ? <Close /> : <IconDotsVertical />}
       </Button>
 
-      {selected && (
+      <div class="roster__player__modal" aria-hidden="true" aria-modal="true" id={id}>
         <div role="menu" class="roster__player__menu">
           <Button role="menuitem" small>
             Edit
@@ -52,7 +53,7 @@ function Player({ player, selected, onSelectedPlayerClick }) {
             Delete
           </Button>
         </div>
-      )}
+      </div>
     </BoxListItem>
   );
 }
