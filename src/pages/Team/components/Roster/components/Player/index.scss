@@ -5,6 +5,10 @@
 .roster__player {
   position: relative;
 
+  &--selected {
+    border-left: 3px solid $pink-9;
+  }
+
   &--selected &__description__name {
     color: $gray-10;
     font-weight: 700;
