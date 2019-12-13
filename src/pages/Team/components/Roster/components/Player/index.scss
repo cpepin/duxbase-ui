@@ -4,6 +4,7 @@
 
 .roster__player {
   position: relative;
+  border-left: 3px solid transparent;
 
   &--selected {
     border-left: 3px solid $pink-9;
