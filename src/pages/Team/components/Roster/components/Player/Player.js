@@ -1,23 +1,36 @@
 import { h } from 'preact';
-import { useMemo, useCallback, memo } from 'preact/compat';
+import { useMemo, memo } from 'preact/compat';
+import { useParams } from 'react-router-dom';
 import classnames from 'classnames';
+
+import useDelete from 'hooks/useDelete';
 
 import { BoxListItem } from 'components/BoxList';
 import Button from 'components/Button';
 import IconDotsVertical from 'components/Icons/IconDotsVertical';
 import Close from 'components/Icons/Close';
 
+import { playerForTeam } from 'routes/teams';
+
 import './index.scss';
 
-function Player({ id, player, selected, onSelectedPlayerClick }) {
+function Player({ id, onGetPlayers, player, selected, onSelectedPlayerClick }) {
+  const { id: teamId } = useParams();
+  const { del: removePlayerFromTeam } = useDelete(playerForTeam(teamId, player.id));
+
   const fullName = useMemo(() => `${player.firstName} ${player.lastName}`, [
     player.firstName,
     player.lastName,
   ]);
 
-  const handleClick = useCallback(() => {
+  const handleClick = () => {
     onSelectedPlayerClick(id);
-  }, [id]);
+  };
+
+  const handleRemoveClick = async () => {
+    await removePlayerFromTeam();
+    onGetPlayers();
+  };
 
   const classes = useMemo(
     () => classnames('roster__player', { 'roster__player--selected': selected }),
@@ -49,8 +62,8 @@ function Player({ id, player, selected, onSelectedPlayerClick }) {
           <Button role="menuitem" small secondary onClick={handleClick}>
             Cancel
           </Button>
-          <Button role="menuitem" small text>
-            Delete
+          <Button role="menuitem" small text onClick={handleRemoveClick}>
+            Remove
           </Button>
         </div>
       </div>

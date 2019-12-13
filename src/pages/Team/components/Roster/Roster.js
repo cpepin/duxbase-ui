@@ -87,6 +87,7 @@ function Roster() {
                 key={player.id}
                 player={player}
                 selected={getPlayerModalId(player.id) === selectedPlayerId}
+                onGetPlayers={getPlayers}
                 onSelectedPlayerClick={handleSelectedPlayerClick}
               />
             ))}
