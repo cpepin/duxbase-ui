@@ -8,7 +8,6 @@ import Card from 'components/Card';
 import Breadcrumbs from 'components/Breadcrumbs';
 
 import useGet from 'hooks/useGet';
-import useWorker from 'hooks/useWorker';
 
 import { playersForTeam } from 'routes/teams';
 
@@ -20,15 +19,8 @@ const getPlayerModalId = id => `roster-player-modal-${id}`;
 
 function Roster() {
   const [selectedPlayerId, setSelectedPlayerId] = useState();
-  const [selectedPlayer, setSelectedPlayer] = useState();
   const { id } = useParams();
   const { data: players, get: getPlayers } = useGet(playersForTeam(id));
-  const rosterWorker = useWorker(new Worker('./roster.worker.js', { type: 'module' }));
-
-  const findSelectedPlayer = async _id => {
-    const foundPlayer = await rosterWorker.findPlayerById(players, _id);
-    setSelectedPlayer(foundPlayer);
-  };
 
   const teamsCrumbs = useMemo(
     () => [
@@ -64,12 +56,6 @@ function Roster() {
   useEffect(() => {
     getPlayers();
   }, [getPlayers]);
-
-  useEffect(() => {
-    if (selectedPlayerId) {
-      findSelectedPlayer(selectedPlayerId);
-    }
-  }, [selectedPlayerId]);
 
   return (
     <Fragment>

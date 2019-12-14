@@ -11,10 +11,6 @@ function useModal(id) {
     MicroModal.show(id);
   };
 
-  useSetup(() => {
-    MicroModal.init();
-  });
-
   return { close, show };
 }
 

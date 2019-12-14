@@ -57,6 +57,8 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, process.env.CORDOVA ? 'www' : 'dist'),
     publicPath: process.env.CORDOVA ? '' : '/',
+    // eslint-disable-next-line no-restricted-globals
+    globalObject: typeof self !== 'undefined' ? 'self' : 'this',
   },
   resolve: {
     alias: {

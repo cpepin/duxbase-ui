@@ -23,7 +23,7 @@ function AddPlayer({ onSubmit }) {
     <Fragment>
       {/* Thanks safari */}
       <div>
-        <Button class="ml-auto" type="button" small secondary onClick={show}>
+        <Button class="ml-auto" type="button" small primary onClick={show}>
           Add player
         </Button>
       </div>
