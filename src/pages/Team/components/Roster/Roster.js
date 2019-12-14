@@ -3,31 +3,32 @@ import { useMemo, memo, Fragment, useEffect, useState, useCallback } from 'preac
 import { useParams } from 'react-router-dom';
 import Micromodal from 'micromodal';
 
-import Button from 'components/Button';
 import BoxList from 'components/BoxList';
 import Card from 'components/Card';
 import Breadcrumbs from 'components/Breadcrumbs';
-import Modal from 'components/Modal';
 
-import useModal from 'hooks/useModal';
 import useGet from 'hooks/useGet';
+import useWorker from 'hooks/useWorker';
 
 import { playersForTeam } from 'routes/teams';
 
 import Player from './components/Player';
-import CreatePlayerForm from './components/CreatePlayerForm';
+import AddPlayer from './components/AddPlayer';
 import './index.scss';
-
-const createPlayerModalId = 'create-player-modal';
-const CreateModalTitle = memo(() => <Fragment>Create Player</Fragment>);
 
 const getPlayerModalId = id => `roster-player-modal-${id}`;
 
 function Roster() {
   const [selectedPlayerId, setSelectedPlayerId] = useState();
-  const { show, close: handleClose } = useModal(createPlayerModalId);
+  const [selectedPlayer, setSelectedPlayer] = useState();
   const { id } = useParams();
   const { data: players, get: getPlayers } = useGet(playersForTeam(id));
+  const rosterWorker = useWorker(new Worker('./roster.worker.js', { type: 'module' }));
+
+  const findSelectedPlayer = async _id => {
+    const foundPlayer = await rosterWorker.findPlayerById(players, _id);
+    setSelectedPlayer(foundPlayer);
+  };
 
   const teamsCrumbs = useMemo(
     () => [
@@ -37,16 +38,15 @@ function Roster() {
     [id],
   );
 
-  const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
     getPlayers();
-    handleClose();
-  };
+  }, [getPlayers]);
 
   const handleSelectedPlayerClick = useCallback(
     newId => {
       setSelectedPlayerId(currId => {
         if (currId) {
-          Micromodal.close(currId);
+          Micromodal.close(getPlayerModalId(currId));
         }
 
         if (newId === currId) {
@@ -54,7 +54,7 @@ function Roster() {
           return undefined;
         }
 
-        Micromodal.show(newId);
+        Micromodal.show(getPlayerModalId(newId));
         return newId;
       });
     },
@@ -65,6 +65,12 @@ function Roster() {
     getPlayers();
   }, [getPlayers]);
 
+  useEffect(() => {
+    if (selectedPlayerId) {
+      findSelectedPlayer(selectedPlayerId);
+    }
+  }, [selectedPlayerId]);
+
   return (
     <Fragment>
       <Breadcrumbs links={teamsCrumbs} />
@@ -72,12 +78,7 @@ function Roster() {
       <Card fluid padded class="mt-4">
         <h2 class="font-size-5">Roster</h2>
 
-        {/* Thanks safari */}
-        <div>
-          <Button class="ml-auto" type="button" small secondary onClick={show}>
-            Add player
-          </Button>
-        </div>
+        <AddPlayer onSubmit={handleSubmit} />
 
         <BoxList class="roster mt-4">
           {players &&
@@ -86,24 +87,13 @@ function Roster() {
                 id={getPlayerModalId(player.id)}
                 key={player.id}
                 player={player}
-                selected={getPlayerModalId(player.id) === selectedPlayerId}
+                selected={player.id === selectedPlayerId}
                 onGetPlayers={getPlayers}
                 onSelectedPlayerClick={handleSelectedPlayerClick}
               />
             ))}
         </BoxList>
       </Card>
-
-      <Modal id={createPlayerModalId} title={CreateModalTitle}>
-        <p>Add a player to your team.</p>
-
-        <p>
-          If this email has already registed with duxbase, this player will be able to link their
-          account.
-        </p>
-
-        <CreatePlayerForm teamId={id} onCancel={handleClose} onSubmit={handleSubmit} />
-      </Modal>
     </Fragment>
   );
 }

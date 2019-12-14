@@ -1,5 +1,6 @@
 import { h } from 'preact';
 import { memo } from 'preact/compat';
+import { useParams } from 'react-router-dom';
 
 import { isRequired, isEmail } from 'utils/validation';
 
@@ -12,7 +13,8 @@ import FieldContainer from 'components/FieldContainer';
 import TextField from 'components/TextField';
 import Button from 'components/Button';
 
-function CreatePlayerForm({ teamId, onCancel, onSubmit }) {
+function CreatePlayerForm({ onCancel, onSubmit }) {
+  const { id: teamId } = useParams();
   const { post: createPlayer } = usePost(playersForTeam(teamId));
 
   const handleSubmit = async player => {

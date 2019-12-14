@@ -24,7 +24,7 @@ function Player({ id, onGetPlayers, player, selected, onSelectedPlayerClick }) {
   ]);
 
   const handleClick = () => {
-    onSelectedPlayerClick(id);
+    onSelectedPlayerClick(player.id);
   };
 
   const handleRemoveClick = async () => {

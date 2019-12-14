@@ -2,10 +2,12 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const WorkerPlugin = require('worker-plugin');
 
 module.exports = {
   entry: ['./src/index.js'],
   plugins: [
+    new WorkerPlugin(),
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       title: 'Squad Leader',
@@ -54,7 +56,7 @@ module.exports = {
   output: {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, process.env.CORDOVA ? 'www' : 'dist'),
-    publicPath: '/',
+    publicPath: process.env.CORDOVA ? '' : '/',
   },
   resolve: {
     alias: {

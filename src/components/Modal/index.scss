@@ -5,6 +5,7 @@
   display: none;
 
   &__overlay {
+    z-index: 150;
     position: fixed;
     top: 0;
     left: 0;
