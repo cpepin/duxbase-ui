@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 import './index.scss';
 
-function Team({ class: className, ...rest }) {
+function Team({ class: className, primaryFill, secondaryFill, ...rest }) {
   const classes = classnames('team-icon', className);
 
   return (

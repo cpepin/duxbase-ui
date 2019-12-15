@@ -20,7 +20,7 @@ function Team() {
   }, []);
 
   return (
-    <Container size="sm" class="mt-8">
+    <Container size="sm" class="mt-5">
       {!isLoading && team && <h1 class="font-size-6">{team.name}</h1>}
       <Route path={`${path}/roster`} component={Roster} />
     </Container>

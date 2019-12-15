@@ -33,7 +33,7 @@ function Teams() {
   };
 
   return (
-    <Container size="sm" class="mt-8">
+    <Container size="sm" class="mt-5">
       <h1 class="font-size-6">Teams</h1>
 
       <Breadcrumbs links={teamsCrumbs} />

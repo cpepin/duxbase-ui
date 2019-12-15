@@ -16,18 +16,16 @@ const Router = isCordova() ? HashRouter : BrowserRouter;
 
 function App() {
   return (
-    <main>
-      <Router>
-        <UserProvider>
-          <Switch>
-            <AnonymousRoute component={SignIn} path="/" exact />
-            <SignedInRoute component={Home} path="/home" />
-            <SignedInRoute component={Teams} path="/teams" exact />
-            <SignedInRoute component={Team} path="/teams/:id" />
-          </Switch>
-        </UserProvider>
-      </Router>
-    </main>
+    <Router>
+      <UserProvider>
+        <Switch>
+          <AnonymousRoute component={SignIn} path="/" exact />
+          <SignedInRoute component={Home} path="/home" />
+          <SignedInRoute component={Teams} path="/teams" exact />
+          <SignedInRoute component={Team} path="/teams/:id" />
+        </Switch>
+      </UserProvider>
+    </Router>
   );
 }
 

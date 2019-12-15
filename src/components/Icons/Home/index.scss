@@ -1,0 +1,9 @@
+@import '../../../sass/abstracts/variables';
+
+.icon-home {
+  width: 2rem;
+
+  &__path {
+    fill: $gray-9;
+  }
+}

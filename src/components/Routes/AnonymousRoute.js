@@ -12,7 +12,11 @@ function AnonymousRoute({ component, ...rest }) {
     }
   });
 
-  return <Route component={component} {...rest} />;
+  return (
+    <main>
+      <Route component={component} {...rest} />
+    </main>
+  );
 }
 
 export default AnonymousRoute;
