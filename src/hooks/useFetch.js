@@ -1,8 +1,7 @@
 import { useCallback, useState } from 'preact/compat';
 
 import { getStandardHeaders } from 'utils/headers';
-import { refreshAccessToken, setAccessToken } from 'utils/token';
-import { setCookie } from 'utils/cookies';
+import { refreshAccessToken, setAccessToken, getRefreshToken } from 'utils/token';
 
 function useFetch(url) {
   const [data, setData] = useState();
@@ -27,7 +26,7 @@ function useFetch(url) {
         } else if (response.status === 401) {
           const json = await response.json();
 
-          if (json.isBoom && json.output.payload.message === 'jwt expired') {
+          if (json.isBoom && getRefreshToken()) {
             await refreshAccessToken();
             request(opts);
           } else {
