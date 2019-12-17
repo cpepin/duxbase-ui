@@ -1,12 +1,16 @@
 import { useEffect, useRef } from 'preact/compat';
 import * as Comlink from 'comlink';
 
+import useSetup from 'hooks/useSetup';
+
 function useWorker(worker) {
   const comlinkInstance = useRef();
 
-  useEffect(() => {
+  useSetup(() => {
     comlinkInstance.current = Comlink.wrap(worker);
+  });
 
+  useEffect(() => {
     return () => {
       worker.terminate();
     };

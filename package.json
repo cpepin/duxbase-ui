@@ -67,6 +67,7 @@
     "preact": "^10.0.1",
     "react-router-dom": "^5.1.2",
     "regenerator-runtime": "^0.13.3",
+    "socket.io-client": "^2.3.0",
     "spinthatshit": "^1.0.4",
     "unfetch": "^4.1.0",
     "validator": "^12.0.0"
