@@ -11,13 +11,15 @@ function Team({ team }) {
   const rosterUrl = useMemo(() => `/teams/${team.id}/roster`, [team]);
 
   return (
-    <BoxListItem link to={rosterUrl}>
+    <BoxListItem link to={rosterUrl} data-testid={`team-${team.id}-link`}>
       {/* <NotificationContainer class="team-list__item__icon"> */}
       <TeamIcon class="team-list__team__icon" />
       {/* </NotificationContainer> */}
       <div class="team-list__team__description">
         <div>
-          <span class="team-list__team__description__title">{team.name}</span>
+          <span class="team-list__team__description__title" data-testid={`team-${team.id}-name`}>
+            {team.name}
+          </span>
           {/* <span class="team-list__item__description__event team-list__item__description__event--urgent">
             Event tomorrow
           </span> */}

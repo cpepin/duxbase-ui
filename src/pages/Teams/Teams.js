@@ -6,6 +6,7 @@ import Button from 'components/Button';
 import Breadcrumbs from 'components/Breadcrumbs';
 import Card from 'components/Card';
 import Modal from 'components/Modal';
+import Spinner from 'components/Spinner';
 
 import TeamList from 'pages/Teams/components/TeamList';
 import CreateTeamForm from 'pages/Teams/components/CreateTeamForm';
@@ -21,7 +22,7 @@ const createTeamModalId = 'create-team-modal';
 
 function Teams() {
   const { show, close: handleClose } = useModal(createTeamModalId);
-  const { data: teams, get: getTeams } = useGet(teamsRoute());
+  const { data: teams, get: getTeams, isLoading } = useGet(teamsRoute());
 
   useEffect(() => {
     getTeams();
@@ -52,7 +53,7 @@ function Teams() {
       </Modal>
 
       <Card class="mt-3">
-        <TeamList teams={teams} />
+        {isLoading ? <Spinner data-testid="teams-spinner" /> : <TeamList teams={teams} />}
       </Card>
     </Container>
   );

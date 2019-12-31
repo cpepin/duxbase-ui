@@ -11,6 +11,8 @@ function useFetch(url) {
   const request = useCallback(
     async opts => {
       try {
+        setIsLoading(true);
+
         const response = await fetch(url, {
           headers: getStandardHeaders(),
           ...opts,
